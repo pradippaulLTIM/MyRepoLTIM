@@ -1,0 +1,26 @@
+build/
+Pods
+xcuserdata
+*.xcuserstate
+archiveLog.txt
+*.xcarchive.ipa
+*.DS_Store
+._*
+DerivedData/
+
+# Added by Felix
+/*.itmsp
+.idea
+spec/fixtures/*.itmsp/*.png
+/integration
+spec/fixtures/fastfiles/report.xml
+*.ipa
+
+# Fastlane
+fastlane/report.xml
+fastlane/.env.secret
+
+# Mockingbird generated
+*.generated.swift
+**/*.xcodeproj/MockingbirdCache/* # Recommendation to ignore all cache files in case Mockingbird ever changes naming convention inside the folder.
+lib_InternalSwiftSyntaxParser.dylib
