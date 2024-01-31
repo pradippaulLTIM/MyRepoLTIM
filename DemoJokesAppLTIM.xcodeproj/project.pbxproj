@@ -17,7 +17,8 @@
 		8BE238012B668294005F70E5 /* GetJokesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE238002B668294005F70E5 /* GetJokesUseCase.swift */; };
 		8BE238032B668304005F70E5 /* JokesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE238022B668304005F70E5 /* JokesListViewModel.swift */; };
 		8BE238052B6683C8005F70E5 /* JokesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE238042B6683C8005F70E5 /* JokesListView.swift */; };
-		8BE2380F2B669848005F70E5 /* DemoJokesAppLTIMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE2380E2B669848005F70E5 /* DemoJokesAppLTIMTests.swift */; };
+		8BE238192B6770F1005F70E5 /* JokesListViewModelUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE238182B6770F0005F70E5 /* JokesListViewModelUnitTest.swift */; };
+		8BE2381B2B6A912F005F70E5 /* JokesListUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE2381A2B6A912F005F70E5 /* JokesListUITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +44,10 @@
 		8BE238022B668304005F70E5 /* JokesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListViewModel.swift; sourceTree = "<group>"; };
 		8BE238042B6683C8005F70E5 /* JokesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListView.swift; sourceTree = "<group>"; };
 		8BE2380C2B669848005F70E5 /* DemoJokesAppLTIMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoJokesAppLTIMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BE2380E2B669848005F70E5 /* DemoJokesAppLTIMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoJokesAppLTIMTests.swift; sourceTree = "<group>"; };
 		8BE238152B66C2B1005F70E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8BE238162B66C2DC005F70E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8BE238182B6770F0005F70E5 /* JokesListViewModelUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListViewModelUnitTest.swift; sourceTree = "<group>"; };
+		8BE2381A2B6A912F005F70E5 /* JokesListUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				8BE238152B66C2B1005F70E5 /* Info.plist */,
-				8BE2380E2B669848005F70E5 /* DemoJokesAppLTIMTests.swift */,
+				8BE238182B6770F0005F70E5 /* JokesListViewModelUnitTest.swift */,
+				8BE2381A2B6A912F005F70E5 /* JokesListUITest.swift */,
 			);
 			path = DemoJokesAppLTIMTests;
 			sourceTree = "<group>";
@@ -298,7 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BE2380F2B669848005F70E5 /* DemoJokesAppLTIMTests.swift in Sources */,
+				8BE2381B2B6A912F005F70E5 /* JokesListUITest.swift in Sources */,
+				8BE238192B6770F1005F70E5 /* JokesListViewModelUnitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
