@@ -14,16 +14,19 @@ class JokesListViewModel: ObservableObject {
     @Published var jokes: [Jokes] = []
     @Published var errorMessage = ""
     @Published var hasError = false
+    @Published var loading = false
 
     func getJokes() async {
+        self.loading = true
         errorMessage = ""
         let result = await getJokesUseCase.execute()
+        self.loading = false
         switch result{
         case .success(let jokes):
             self.jokes = jokes
         case .failure(let error):
             self.jokes = []
-            errorMessage = error.localizedDescription
+            errorMessage = error.description
             hasError = true
         }
     }

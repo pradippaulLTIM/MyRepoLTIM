@@ -17,6 +17,7 @@ struct JokesListView: View {
     
     var body: some View {
         VStack {
+            // ActivityIndicator(isAnimating: $vm.loading, style: .large)
             Text("Jokes").font(.headline)
             List{
                 ForEach(vm.jokes) { jokes in

@@ -40,6 +40,17 @@
                ReferencedContainer = "container:DemoJokesAppLTIM.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8BE238212B6A9FFB005F70E5"
+               BuildableName = "DemoJokesAppLTIMUITests.xctest"
+               BlueprintName = "DemoJokesAppLTIMUITests"
+               ReferencedContainer = "container:DemoJokesAppLTIM.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
