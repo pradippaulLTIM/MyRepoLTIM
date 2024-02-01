@@ -8,16 +8,40 @@
 import XCTest
 @testable import DemoJokesAppLTIM
 
-class MockGetJokesUseCase: GetTodos{
-    func execute() async -> Result<[Todo], UseCaseError> {
+class MockGetJokesUseCase: GetJokes{
+    func execute() async -> Result<[Jokes], UseCaseError> {
         Result.success([
-            Todo(id: 1, title: "Mock Title One", isCompleted: true),
-            Todo(id: 2, title: "Mock Title Two", isCompleted: false)
+            Jokes(joke: "Joke1"),
+            Jokes(joke: "Joke2")
         ])
     }
 }
-final class JokesListViewModelUnitTest: XCTestCase {
-
-  
-
+ class JokesListViewModelUnitTest: XCTestCase {
+    @MainActor func testJokesViewModel_ShouldExist() {
+        let _ = JokesListViewModel()
+    }
+     
+     @MainActor func testJokesViewModel_Should_Return_An_Empty_Jokes_List()  {
+         let vm = JokesListViewModel()
+         
+         let jokes = vm.jokes
+         
+         XCTAssertEqual(jokes.count, 0)
+     }
+     
+//     @MainActor func testJokesViewModel_Should_Return_2_jokes_when_jokes_is_invoked() async throws {
+//         let vm = JokesListViewModel()
+//         
+//         let jokes: () = await vm.getJokes()
+//         
+//         XCTAssertEqual(jokes.count, 0)
+//     }
+//     
+//     @MainActor func testJokesViewModel_Should_display_error_message_when_getJokes_Resluts_InError() async throws {
+//         let vm = JokesListViewModel()
+//         
+//         let jokes: () = await vm.getJokes()
+//         
+//         XCTAssertEqual(jokes.count, 0)
+//     }
 }
