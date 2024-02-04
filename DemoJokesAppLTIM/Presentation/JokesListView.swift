@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JokesListView: View {
-    @StateObject var vm = JokesListViewModel()
+    @StateObject var vm = JokesListViewModel(getJokesUseCase: GetJokesUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation())))
     
     func refreshList() async {
         // asyncronously refresh your list here
@@ -17,6 +17,7 @@ struct JokesListView: View {
     
     var body: some View {
         VStack {
+            // ActivityIndicator(isAnimating: $vm.loading, style: .large)
             Text("Jokes").font(.headline)
             List{
                 ForEach(vm.jokes) { jokes in

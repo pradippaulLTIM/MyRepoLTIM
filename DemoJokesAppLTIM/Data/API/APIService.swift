@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIServiceError: Error{
+@frozen enum APIServiceError: Error{
     case badUrl, badRequest, requestError, decodingError, statusNotOK
 }
 
