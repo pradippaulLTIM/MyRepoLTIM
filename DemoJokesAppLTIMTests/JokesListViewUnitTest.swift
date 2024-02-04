@@ -8,40 +8,37 @@
 import XCTest
 @testable import DemoJokesAppLTIM
 
-class MockGetJokesUseCase: GetJokes{
-    func execute() async -> Result<[Jokes], UseCaseError> {
-        Result.success([
-            Jokes(joke: "Joke1"),
-            Jokes(joke: "Joke2")
-        ])
-    }
-}
+@MainActor
  class JokesListViewModelUnitTest: XCTestCase {
-    @MainActor func testJokesViewModel_ShouldExist() {
-        let _ = JokesListViewModel()
+     func testJokesViewModel_ShouldExist() throws {
+        let _ = JokesListViewModel(getJokesUseCase: MockGetJokesUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation())))
     }
      
-     @MainActor func testJokesViewModel_Should_Return_An_Empty_Jokes_List()  {
-         let vm = JokesListViewModel()
+     func testJokesViewModel_Should_Return_An_Empty_Jokes_List() async  throws {
+         let vm = JokesListViewModel(getJokesUseCase: MockGetJokesUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation())))
          
          let jokes = vm.jokes
          
          XCTAssertEqual(jokes.count, 0)
      }
      
-//     @MainActor func testJokesViewModel_Should_Return_2_jokes_when_jokes_is_invoked() async throws {
-//         let vm = JokesListViewModel()
-//         
-//         let jokes: () = await vm.getJokes()
-//         
-//         XCTAssertEqual(jokes.count, 0)
-//     }
-//     
-//     @MainActor func testJokesViewModel_Should_display_error_message_when_getJokes_Resluts_InError() async throws {
-//         let vm = JokesListViewModel()
-//         
-//         let jokes: () = await vm.getJokes()
-//         
-//         XCTAssertEqual(jokes.count, 0)
-//     }
+     func testJokesViewModel_Should_Return_2_jokes_when_jokes_is_invoked() async throws {
+         let vm = JokesListViewModel(getJokesUseCase: MockGetJokesUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation())))
+         
+         await vm.getJokes()
+         let jokes = vm.jokes
+         
+         XCTAssertEqual(jokes.count, 3)
+     }
+     
+      func testJokesViewModel_Should_display_error_message_when_getJokes_Resluts_InError() async throws {
+         let vm = JokesListViewModel(getJokesUseCase: MockGetJokesErrorUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation())))
+         
+         await vm.getJokes()
+         let jokes = vm.jokes
+         
+         
+         XCTAssertEqual(jokes.count, 0)
+         XCTAssertEqual(vm.errorMessage, "Network Error")
+     }
 }

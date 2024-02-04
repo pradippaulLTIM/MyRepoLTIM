@@ -9,13 +9,17 @@ import Foundation
 
 @MainActor
 class JokesListViewModel: ObservableObject {
+    private var getJokesUseCase : GetJokes
 
-    var getJokesUseCase = GetJokesUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation()))
+    init(getJokesUseCase: GetJokes){
+        self.getJokesUseCase = getJokesUseCase
+    }
+    
     @Published var jokes: [Jokes] = []
     @Published var errorMessage = ""
     @Published var hasError = false
     @Published var loading = false
-
+    
     func getJokes() async {
         self.loading = true
         errorMessage = ""

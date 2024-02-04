@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JokesListView: View {
-    @StateObject var vm = JokesListViewModel()
+    @StateObject var vm = JokesListViewModel(getJokesUseCase: GetJokesUseCase(repo: JokesRepositoryImplementation(dataSource: JokesAPIDataSourceImplementation())))
     
     func refreshList() async {
         // asyncronously refresh your list here

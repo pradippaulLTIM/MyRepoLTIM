@@ -13,19 +13,23 @@ enum UseCaseError: Error{
     var description: String {
         switch self {
         case .networkError:
-            "NetWork Error:\(localizedDescription)"
+            "Network Error"
         case .decodingError:
-           "Decoing Error:\(localizedDescription)"
+           "Decoding Error"
         }
     }
 }
 
-protocol GetJokes{
+protocol GetJokes {
     func execute() async -> Result<[Jokes], UseCaseError>
 }
 
 struct GetJokesUseCase: GetJokes {
-    var repo: JokesRepository
+    private var repo: JokesRepository
+    
+    init(repo: JokesRepository) {
+        self.repo = repo
+    }
 
     func execute() async -> Result<[Jokes], UseCaseError>{
         do{
