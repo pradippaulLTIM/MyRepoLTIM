@@ -12,17 +12,19 @@ struct JokesListView: View {
     
     func refreshList() async {
         // asyncronously refresh your list here
-        await vm.getJokes()
+         await vm.getJokes()
     }
     
     var body: some View {
         VStack {
             // ActivityIndicator(isAnimating: $vm.loading, style: .large)
             Text("Jokes").font(.headline)
+                .accessibility(label: Text("Jokes List"))
             List{
                 ForEach(vm.jokes) { jokes in
                     HStack{
                         Text("\(jokes.joke)")
+                            .accessibility(label: Text("\(jokes.joke)"))
                     }
                 }
             }
@@ -33,6 +35,27 @@ struct JokesListView: View {
             .refreshable {
                 await refreshList()
             }
+            Button(action: {
+                Task {
+                    await refreshList()
+                }
+            }) {
+                Text("Refresh")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(40)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 40)
+                            .stroke(Color.blue, lineWidth: 5)
+                    )
+            }
+            .accessibilityLabel("Refresh")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityHint("Tap the button to refresh the list")
         }
     }
 }
